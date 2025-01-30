@@ -10,7 +10,7 @@
 
     <style>
         body { 
-            font-family: 'Mali', sans-serif; /* ใช้ฟอนต์ Mali */
+            font-family: 'Mali', sans-serif; 
             padding: 0;
             margin: 0;
             text-align: center; 
@@ -24,25 +24,29 @@
         .container { 
             max-width: 600px; 
             margin: auto; 
-            background: rgba(255, 255, 255, 0.7);  /* ให้พื้นหลังของกล่องโปร่งแสง */
-            padding: 20px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.7);  
+            padding: 50px;
+            border-radius: 30px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
+
         .title {
-            font-family: 'Charm', serif;  /* ใช้ฟอนต์ Charm */
+            font-family: 'Charm', serif;
             font-size: 35px;
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .dropdown {
-            width: 100%;
+
+        .input-field, .select-field {
+            width: 85%;
             padding: 10px;
-            border-radius: 5px;
-            border: none;
-            margin: 10px 0;
             font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            text-align: center;
         }
+
         .button { 
             background: rgb(78, 78, 253); 
             color: white; 
@@ -53,31 +57,51 @@
             font-size: 16px;
             transition: background 0.3s ease-in-out;
         }
+
         .button:hover {
             background: #0000ef;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: rgb(0, 128, 0);
+            
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="title">หน้าสร้างรุ่น</h1>
-        <p>เลือกประเภทสินค้าเพื่อเริ่มสร้างรุ่น</p>
-        <select class="dropdown" id="product-type">
-            <option value="">เลือกประเภทสินค้า</option>
-            <option value="ขนม">ขนม</option>
-            <option value="เครื่องดื่ม">เครื่องดื่ม</option>
-            <option value="อาหาร">อาหาร</option>
+        <p>กรอกจำนวนรุ่น:</p>
+        <input type="text" id="population" class="input-field" placeholder="ใส่จำนวนรุ่น">
+
+        <p>กรอกขนาดประชากร:</p>
+        <input type="text" id="populationSize" class="input-field" placeholder="ใส่ขนาดประชากร">
+
+        <p>เลือกฟังก์ชันเหมาะสม:</p>
+        <select id="dropboxFunction" class="select-field">
+            <option value="">เลือกฟังก์ชัน</option>
+            <option value="Function A">Roulette Wheel</option>
+            <option value="Function B">Tournament</option>
+            <option value="Function C">Linear Ranking</option>
         </select>
+        
         <button class="button" onclick="startProcessing()">สร้างรุ่น</button>
+        
+        <p id="result"></p>
     </div>
 
     <script>
         function startProcessing() {
-            const selectedType = document.getElementById('product-type').value;
-            if (selectedType) {
-                alert(`เริ่มสร้างรุ่นสำหรับ: ${selectedType}`);
+            const population = document.getElementById('population').value;
+            const populationSize = document.getElementById('populationSize').value;
+            const dropboxFunction = document.getElementById('dropboxFunction').value;
+
+            if (population && populationSize && dropboxFunction) {
+                document.getElementById('result').innerHTML = `จำนวนรุ่น: ${population}<br>ขนาดประชากร: ${populationSize}<br>ฟังก์ชัน Dropbox: ${dropboxFunction}`;
             } else {
-                alert('กรุณาเลือกประเภทสินค้าก่อน');
+                document.getElementById('result').innerHTML = 'กรุณากรอกข้อมูลให้ครบถ้วน';
             }
         }
     </script>
