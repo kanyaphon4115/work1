@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าสร้างรุ่น (Create Model Page)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body { 
+            font-family: 'Mali', sans-serif; /* ใช้ฟอนต์ Mali */
+            padding: 0;
+            margin: 0;
+            text-align: center; 
+            color: rgb(164, 24, 164);
+            background-image: url('shop.jpg');  
+            background-size: cover;  
+            background-position: center;  
+            background-attachment: fixed;  
+        }
+
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: rgba(255, 255, 255, 0.7);  /* ให้พื้นหลังของกล่องโปร่งแสง */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            font-family: 'Charm', serif;  /* ใช้ฟอนต์ Charm */
+            font-size: 35px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .dropdown {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .button { 
+            background: rgb(78, 78, 253); 
+            color: white; 
+            padding: 12px 25px; 
+            border: none; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+        }
+        .button:hover {
+            background: #0000ef;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">หน้าสร้างรุ่น</h1>
+        <p>เลือกประเภทสินค้าเพื่อเริ่มสร้างรุ่น</p>
+        <select class="dropdown" id="product-type">
+            <option value="">เลือกประเภทสินค้า</option>
+            <option value="ขนม">ขนม</option>
+            <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+            <option value="อาหาร">อาหาร</option>
+        </select>
+        <button class="button" onclick="startProcessing()">สร้างรุ่น</button>
+    </div>
+
+    <script>
+        function startProcessing() {
+            const selectedType = document.getElementById('product-type').value;
+            if (selectedType) {
+                alert(`เริ่มสร้างรุ่นสำหรับ: ${selectedType}`);
+            } else {
+                alert('กรุณาเลือกประเภทสินค้าก่อน');
+            }
+        }
+    </script>
+</body>
+</html>
